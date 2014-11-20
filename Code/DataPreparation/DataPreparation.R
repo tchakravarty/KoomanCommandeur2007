@@ -15,6 +15,15 @@ colnames(dfKSI) = "Drivers"
 dfKSI$Date = seq.Date(from = as.Date("1969-01-01"), 
                       by = "month", length.out = 192)
 dfKSI$logDrivers = log(dfKSI$Drivers)
+
+dfPetrol = read.table("Data//Raw//logUKpetrolprice.txt", header = FALSE, skip = 1)
+colnames(dfPetrol) = "logPetrol"
+dfPetrol$Date = seq.Date(from = as.Date("1969-01-01"), 
+                      by = "month", length.out = 192)
+
+
+dfKSI = merge(dfPetrol, dfKSI, by = "Date")
+saveRDS(dfPetrol, "Data/Processed/dfPetrol.rds")
 saveRDS(dfKSI, "Data/Processed/dfKSI.rds")
 
 #==========================================================

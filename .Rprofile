@@ -5,6 +5,7 @@ library(gridExtra)
 library(qwraps) # github
 library(KFAS)
 library(lmtest)
+library(scales)
 
 # set the default plotting theme
 theme_set(theme_bw())
